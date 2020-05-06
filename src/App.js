@@ -121,11 +121,7 @@ const App = observer(() => {
     </div>
 
     <div className="text-sm mb-4">
-      <Button customize={{
-        Root: {
-          overrideClassName: "px-6 text-gray-700 text-xs"
-        }
-      }} >source code</Button>
+      <a className="px-6 text-gray-700 text-xs" target="_blank" href="https://github.com/untsop/mafan-2020">source code</a>
     </div>
 
   </div>
