@@ -51,6 +51,9 @@ export class DataStore {
 
     if (problem.take) {
       if (problem.take.some((stuff) => {
+        if (stuff.name === '你拥有的一切') {
+          return false
+        }
         const foundItem = this.goods.find((item) => item.name === stuff.name)
         if (foundItem && (foundItem.number || 1) >= (stuff.number || 1)) {
           return false

@@ -23,7 +23,11 @@ export const mafan = {
     {
       level: 5,
       name: "老年"
-    }
+    },
+    {
+      level: 6,
+      name: "幽灵"
+    },
   ],
   problems: [
     {

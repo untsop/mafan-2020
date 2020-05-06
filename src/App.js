@@ -53,6 +53,9 @@ const App = observer(() => {
 
   const notSolvable = (problem) => {
     if (problem.take && !problem.take.every((item) => {
+      if (item.name === '你拥有的一切') {
+        return true
+      }
       const stuff = goods.find((g) => g.name === item.name)
       if (stuff && (stuff.number || 1) >= (item.number || 1)) {
         return true
@@ -71,14 +74,15 @@ const App = observer(() => {
     resetProblemTimer(problem)
 
     problem.counting = setInterval(() => {
-      dispatch({
-        title: problem.title,
-        type: 'increment'
-      })
       if (false) {
         dispatch({
           title: problem.title,
           type: 'debug'
+        })
+      } else{
+        dispatch({
+          title: problem.title,
+          type: 'increment'
         })
       }
     }, 50)
