@@ -51,6 +51,19 @@ const App = observer(() => {
     })
   }
 
+  const notSolvable = (problem) => {
+    if (problem.take && !problem.take.every((item) => {
+      const stuff = goods.find((g) => g.name === item.name)
+      if (stuff && (stuff.number || 1) >= (item.number || 1)) {
+        return true
+      }
+      return false
+    })){
+      return true
+    }
+    return false
+  }
+
   const fixProblem = (problem) => {
     if (problemsStates[problem.title] > 0) {
       return
@@ -110,7 +123,7 @@ const App = observer(() => {
               {problem.gain && problem.gain.map((item) => <span className="text-sm text-green-600">+ {item.name} {item.number && <span>&times; {item.number}</span>}</span> )}
             </div>
             <div>
-              <Button disabled={problem.percent > 0} className="text-sm text-red-700 border-red-600" onClick={() => fixProblem(problem)}>解决</Button>
+              <Button disabled={problem.percent > 0 || notSolvable(problem)} className="text-sm text-red-700 border-red-600" onClick={() => fixProblem(problem)}>解决</Button>
             </div>
           </div>
           <div className="absolute w-full" style={{ left: 0, bottom: 0, right: 0}}>
