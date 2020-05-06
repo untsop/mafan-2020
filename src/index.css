@@ -1,0 +1,24 @@
+@import '@hackplan/uui/lib/index.css';
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+  margin: 0;
+  width: 100%;
+  background: #f4f4f4;
+}
+
+img, svg {
+  display: inline;
+  vertical-align: baseline;
+}
+
+button:focus, div:focus, :focus {
+  outline: none !important;
+}
+
+.UUI-Tag-Root .UUI-Tag-Content{
+  font-variant-numeric: tabular-nums;
+}

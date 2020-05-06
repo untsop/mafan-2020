@@ -1,0 +1,15 @@
+{
+  "short_name": "qWallet",
+  "name": "qWallet",
+  "icons": [
+    {
+      "src": "icon192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}
