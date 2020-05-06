@@ -114,7 +114,7 @@ const App = observer(() => {
           return false
         }
         return true
-      }).map((problem) => {
+      }).sort((a, b) => (b.growth ? 1 : 0) - (a.growth ? 1 : 0)).map((problem) => {
         return <div className="relative p-2 px-3 pb-3 bg-white shadow mb-2 rounded" key={problem.title}>
           <div className="flex flex-row items-center">
             <div className="flex flex-col flex-grow">
