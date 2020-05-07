@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useEffect, useRef } from 'react';
+import React, { useContext, useReducer, useEffect, useState } from 'react';
 import { observer } from "mobx-react-lite";
 import { gameContext, problems, levels } from "./store";
 import { Button, Tag } from '@hackplan/uui';
@@ -11,6 +11,7 @@ const App = observer(() => {
   const goods = gameStore.useGoods()
   const defaultStates = Object.fromEntries(problems.map((p) => [p.title, 0]))
 
+  const [shared, setShared] = useState(false)
   const counterReducer = (state, action) => {
     switch (action.type) {
       case 'increment':
@@ -49,6 +50,11 @@ const App = observer(() => {
       title: problem.title,
       type: 'reset'
     })
+  }
+
+  const shareOnTwitter = () => {
+    setShared(true)
+    window.open("https://twitter.com/intent/tweet?tw_p=tweetbutton&text=我正在玩麻烦这个游戏：https://mafan.qqsun.xyz/ by @QQSun", "_blank");
   }
 
   const notSolvable = (problem) => {
@@ -135,10 +141,23 @@ const App = observer(() => {
           </div>
         </div>
       })}
+
+      {!shared && <div className="relative p-2 px-3 mt-3 bg-white shadow mb-2 rounded">
+        <div className="flex flex-row items-center">
+          <div className="flex flex-col flex-grow">
+            <div className="title">将<span className="font-bold text-red-700 mx-1">麻烦</span>分享到 Twitter</div>
+          </div>
+          <div>
+            <Button className="text-sm text-blue-700 border-blue-600" onClick={() => shareOnTwitter()}>分享</Button>
+          </div>
+        </div>
+      </div>}
     </div>
 
+
+
     <div className="text-sm mb-4">
-      <a className="px-6 text-gray-700 text-xs" target="_blank" href="https://github.com/untsop/mafan-2020">source code</a>
+      <a className="px-6 text-gray-500 text-xs" target="_blank" href="https://github.com/untsop/mafan-2020">source code</a>
     </div>
 
   </div>
